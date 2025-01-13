@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main # Change this to the branch you want to monitor
-  pull_request:
-    branches:
-      - main # Trigger build on pull requests to the main branch
 
 jobs:
   build:
@@ -32,11 +29,8 @@ jobs:
       with:
         name: build-output
         path: dist # Change this if your Vite output directory is different
-
-    - name: Configure Git
-      run: |
-        git config --global user.name "vladst90"
-        git config --global user.email "vladst90@gmail.com"
         
     - name: Deploy to GitHub Pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: npm run deploy
