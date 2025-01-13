@@ -25,5 +25,11 @@ export const fetchAchievements = async (): Promise<Achievement[]> => {
           ? parse(date.trim(), "dd-MM-yyyy", new Date())
           : undefined,
       };
-    });
+    })
+    .sort((a, b) => {
+      if (!a.date) return 1;
+      if (!b.date) return -1;
+      return a.date.getTime() - b.date.getTime();
+    })
+    .reverse();
 };

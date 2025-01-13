@@ -15,13 +15,6 @@ export const useAchievements = () => {
 
   useEffect(() => {
     if (achievements && achievements.length > 0) {
-      // Sort achievements by date in descending order, placing undefined dates at the end
-      achievements.sort((a, b) => {
-        if (!a.date) return 1;
-        if (!b.date) return -1;
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      });
-
       const interval = setInterval(() => {
         setCurrentIndex((prev) => {
           if (prev < 19) {
