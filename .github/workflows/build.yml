@@ -32,6 +32,11 @@ jobs:
       with:
         name: build-output
         path: dist # Change this if your Vite output directory is different
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
         
     - name: Deploy to GitHub Pages
       run: npm run deploy
