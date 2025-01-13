@@ -1,6 +1,7 @@
 name: Build Vite Project
 
 on:
+  workflow_dispatch:  # Enables manual triggering of the workflow
   push:
     branches:
       - main # Change this to the branch you want to monitor
